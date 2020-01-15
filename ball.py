@@ -15,14 +15,15 @@ class Ball(pygame.sprite.Sprite):
 
         # Create a surface, get the rect coordinates, fill the surface with a white color (or whatever color the
         # background of your breakout game will be.
-        self.image = pygame.Surface((radius, radius))
-        self.image.fill((255, 255, 255))
+        # self.image = pygame.Surface((radius, radius))
+        # self.image.fill((255, 255, 255))
+        self.image = pygame.image.load("spaceship.png")
         self.rect = self.image.get_rect()
 
         # Add a circle to represent the ball to the surface just created.
-        pygame.draw.circle(self.image, (0, 0, 0), (5, 5), 10, 0)
-        self.x_speed = 3
-        self.y_speed = 4
+        # pygame.draw.circle(self.image, (0, 0, 0), (5, 5), 5, 0)
+        self.x_speed = 4
+        self.y_speed = 3
 
     def move(self):
         self.rect.x += self.x_speed
@@ -35,4 +36,8 @@ class Ball(pygame.sprite.Sprite):
 
     def collide(self, sprite_group):
         if pygame.sprite.spritecollide(self, sprite_group, False):
+            self.y_speed = -self.y_speed
+
+    def collide_brick(self, sprite_group):
+        if pygame.sprite.spritecollide(self, sprite_group, True):
             self.y_speed = -self.y_speed

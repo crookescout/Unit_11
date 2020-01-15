@@ -4,6 +4,7 @@ import pygame
 class Paddle(pygame.sprite.Sprite):
 
     def __init__(self, main_surface, color, width, height):
+        super().__init__()
         # initialize sprite super class
 
         # finish setting the class variables to the parameters
