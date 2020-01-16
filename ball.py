@@ -13,6 +13,8 @@ class Ball(pygame.sprite.Sprite):
         self.window_height = window_height
         self.radius = radius
 
+        self.sound = pygame.mixer.Sound('Pew_Pew.wav')
+
         # Create a surface, get the rect coordinates, fill the surface with a white color (or whatever color the
         # background of your breakout game will be.
         # self.image = pygame.Surface((radius, radius))
@@ -40,4 +42,5 @@ class Ball(pygame.sprite.Sprite):
 
     def collide_brick(self, sprite_group):
         if pygame.sprite.spritecollide(self, sprite_group, True):
+            self.sound.play()
             self.y_speed = -self.y_speed

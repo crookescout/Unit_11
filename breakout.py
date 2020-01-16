@@ -23,22 +23,23 @@ def main():
     NUM_TURNS = 3
 
     # Sets up the colors
-    RED = (255, 0, 0)
-    ORANGE = (255, 165, 0)
-    YELLOW = (255, 255, 0)
-    GREEN =(0, 255, 0)
+    MAGENTA = (255, 0, 255)
+    PURPLE = (75, 0, 130)
+    BLUE = (25, 25, 140)
+    YELLOW =(0, 250, 154)
     CYAN = (0, 255, 255)
-    BLUE = (0, 0, 255)
     BLACK = (0, 0, 0)
     WHITE = (255, 255, 255)
 
-    colors = [RED, ORANGE, YELLOW, GREEN, CYAN]
+    colors = [MAGENTA, PURPLE, BLUE, CYAN, YELLOW]
 
     bricks_group = pygame.sprite.Group()
     paddle_group = pygame.sprite.Group()
 
-    main_surface = pygame.display.set_mode((APPLICATION_WIDTH, APPLICATION_HEIGHT))
-    main_surface.fill((0, 0, 0))
+    main_surface = pygame.display.set_mode((APPLICATION_WIDTH, APPLICATION_HEIGHT), 0, 32)
+    bg = pygame.image.load("stars.png")
+    main_surface.blit(bg, (0, 0))
+    # main_surface.fill((0, 0, 0))
 
     # Step 1: Use loops to draw the rows of bricks. The top row of bricks should be 70 pixels away from the top of
     # the screen (BRICK_Y_OFFSET)
@@ -56,7 +57,7 @@ def main():
             y_pos += BRICK_SEP + BRICK_HEIGHT
             x_pos = BRICK_SEP
 
-    my_paddle = paddle.Paddle(main_surface, BLUE, PADDLE_WIDTH, PADDLE_HEIGHT)
+    my_paddle = paddle.Paddle(main_surface, BLACK, PADDLE_WIDTH, PADDLE_HEIGHT)
     paddle_group.add(my_paddle)
     my_paddle.rect.y = APPLICATION_HEIGHT - PADDLE_Y_OFFSET
     main_surface.blit(my_paddle.image, my_paddle.rect)
@@ -69,6 +70,7 @@ def main():
 
     while True:
         main_surface.fill(BLACK)
+        main_surface.blit(bg, (0, 0))
         for a_brick in bricks_group:
             main_surface.blit(a_brick.image, a_brick.rect)
         my_paddle.move(pygame.mouse.get_pos())
