@@ -24,6 +24,11 @@ class Paddle(pygame.sprite.Sprite):
         # self.image.fill(color)
 
     def move(self, position):
+        """
+        This function makes the x coordinates of the paddle move with x coordinates of the mouse
+        :param position:
+        :return:
+        """
         self.rect.x = position[0]
 
 

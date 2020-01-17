@@ -28,6 +28,11 @@ class Ball(pygame.sprite.Sprite):
         self.y_speed = 3
 
     def move(self):
+        """
+        This function says that is the ball hits the edge of the screen, it will bounce off and move in the opposite
+        direction
+        :return:
+        """
         self.rect.x += self.x_speed
         self.rect.y += self.y_speed
 
@@ -37,10 +42,21 @@ class Ball(pygame.sprite.Sprite):
             self.y_speed = -self.y_speed
 
     def collide(self, sprite_group):
+        """
+        This function sees if two sprite groups hit and if this happens they will go in opposite directions/bounce off
+        :param sprite_group:
+        :return:
+        """
         if pygame.sprite.spritecollide(self, sprite_group, False):
+            self.sound.play()
             self.y_speed = -self.y_speed
 
     def collide_brick(self, sprite_group):
+        """
+        If the ball hits the a brick, the ball will bounce off and the brick will disappear
+        :param sprite_group:
+        :return:
+        """
         if pygame.sprite.spritecollide(self, sprite_group, True):
             self.sound.play()
             self.y_speed = -self.y_speed
