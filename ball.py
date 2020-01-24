@@ -19,6 +19,8 @@ class Ball(pygame.sprite.Sprite):
         # background of your breakout game will be.
         # self.image = pygame.Surface((radius, radius))
         # self.image.fill((255, 255, 255))
+
+        # this makes the ball a spaceship
         self.image = pygame.image.load("spaceship.png")
         self.rect = self.image.get_rect()
 
@@ -53,7 +55,7 @@ class Ball(pygame.sprite.Sprite):
 
     def collide_brick(self, sprite_group):
         """
-        If the ball hits the a brick, the ball will bounce off and the brick will disappear
+        This function makes it so that if the ball hits the a brick, the ball will bounce off and the brick will disappear
         :param sprite_group:
         :return:
         """

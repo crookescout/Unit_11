@@ -15,6 +15,8 @@ class Paddle(pygame.sprite.Sprite):
 
         # Create a surface with the correct height and width
         # self.image = pygame.Surface((width, height))
+
+        # this makes the paddle a shooting star image
         self.image = pygame.image.load("s.png")
 
         # Get the rect coordinates
